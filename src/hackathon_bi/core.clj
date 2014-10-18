@@ -17,13 +17,13 @@
 (defn process [data]
   (->> data :rows
        (map #(transit/read (reader (in (:col2 %)))))
-       #_(map (fn [x]
+       (map (fn [x]
               (assoc x
                 (str "uir_type_" (get x "uir_type"))
                 (get x "uir_name"))))
-       #_(map #(assoc % "country" "Czech republic"))
-       #_(map (fn [x] (select-keys x ["country" "uir_type_address" "where" "what" "source_facility" "from" "size" "uir_type_city" "uir_type_city_part" "uir_type_street" "uir_type_urban_district" "uir_type_district" "uir_type_region"])))
-       (map (fn [x] (print x) x))))
+       (map #(assoc % "country" "Czech republic"))
+       (map (fn [x] (select-keys x ["country" "uir_type_address" "where" "what" "source_facility" "from" "size" "uir_type_city" "uir_type_city_part" "uir_type_street" "uir_type_urban_district" "uir_type_district" "uir_type_region"])))
+       (mapv vals )))
 
 (defn -main [& [in out]]
   (with-open [out-file (io/writer out)]
