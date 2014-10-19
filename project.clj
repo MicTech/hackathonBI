@@ -8,4 +8,5 @@
                  [com.cognitect/transit-clj "0.8.259"]
                  [incanter "1.5.5"]
                  [clj-time "0.8.0"]]
-  :main hackathon-bi.core)
+  :main hackathon-bi.core
+  :jvm-opts ["-Xmx6g"])
